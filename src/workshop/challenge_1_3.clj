@@ -14,101 +14,101 @@
 (defn build-catalog
   ([] (build-catalog 5 50))
   ([batch-size batch-timeout]
-     [{:onyx/name :A
-       :onyx/plugin :onyx.plugin.core-async/input
-       :onyx/type :input
-       :onyx/medium :core.async
-       :onyx/batch-size batch-size
-       :onyx/batch-timeout batch-timeout
-       :onyx/max-peers 1
-       :onyx/doc "Reads segments from a core.async channel"}
+   [{:onyx/name :A
+     :onyx/plugin :onyx.plugin.core-async/input
+     :onyx/type :input
+     :onyx/medium :core.async
+     :onyx/batch-size batch-size
+     :onyx/batch-timeout batch-timeout
+     :onyx/max-peers 1
+     :onyx/doc "Reads segments from a core.async channel"}
 
-      {:onyx/name :B
-       :onyx/plugin :onyx.plugin.core-async/input
-       :onyx/type :input
-       :onyx/medium :core.async
-       :onyx/batch-size batch-size
-       :onyx/batch-timeout batch-timeout
-       :onyx/max-peers 1
-       :onyx/doc "Reads segments from a core.async channel"}
+    {:onyx/name :B
+     :onyx/plugin :onyx.plugin.core-async/input
+     :onyx/type :input
+     :onyx/medium :core.async
+     :onyx/batch-size batch-size
+     :onyx/batch-timeout batch-timeout
+     :onyx/max-peers 1
+     :onyx/doc "Reads segments from a core.async channel"}
 
-      {:onyx/name :C
-       :onyx/plugin :onyx.plugin.core-async/input
-       :onyx/type :input
-       :onyx/medium :core.async
-       :onyx/batch-size batch-size
-       :onyx/batch-timeout batch-timeout
-       :onyx/max-peers 1
-       :onyx/doc "Reads segments from a core.async channel"}
+    {:onyx/name :C
+     :onyx/plugin :onyx.plugin.core-async/input
+     :onyx/type :input
+     :onyx/medium :core.async
+     :onyx/batch-size batch-size
+     :onyx/batch-timeout batch-timeout
+     :onyx/max-peers 1
+     :onyx/doc "Reads segments from a core.async channel"}
 
-      {:onyx/name :D
-       :onyx/fn :clojure.core/identity
-       :onyx/type :function
-       :onyx/batch-size batch-size
-       :onyx/batch-timeout batch-timeout
-       :onyx/doc "Pass the segment through unchanged"}
+    {:onyx/name :D
+     :onyx/fn :clojure.core/identity
+     :onyx/type :function
+     :onyx/batch-size batch-size
+     :onyx/batch-timeout batch-timeout
+     :onyx/doc "Pass the segment through unchanged"}
 
-      {:onyx/name :E
-       :onyx/fn :clojure.core/identity
-       :onyx/type :function
-       :onyx/batch-size batch-size
-       :onyx/batch-timeout batch-timeout
-       :onyx/doc "Pass the segment through unchanged"}
+    {:onyx/name :E
+     :onyx/fn :clojure.core/identity
+     :onyx/type :function
+     :onyx/batch-size batch-size
+     :onyx/batch-timeout batch-timeout
+     :onyx/doc "Pass the segment through unchanged"}
 
-      {:onyx/name :F
-       :onyx/fn :clojure.core/identity
-       :onyx/type :function
-       :onyx/batch-size batch-size
-       :onyx/batch-timeout batch-timeout
-       :onyx/doc "Pass the segment through unchanged"}
+    {:onyx/name :F
+     :onyx/fn :clojure.core/identity
+     :onyx/type :function
+     :onyx/batch-size batch-size
+     :onyx/batch-timeout batch-timeout
+     :onyx/doc "Pass the segment through unchanged"}
 
-      {:onyx/name :G
-       :onyx/fn :clojure.core/identity
-       :onyx/type :function
-       :onyx/batch-size batch-size
-       :onyx/batch-timeout batch-timeout
-       :onyx/doc "Pass the segment through unchanged"}
+    {:onyx/name :G
+     :onyx/fn :clojure.core/identity
+     :onyx/type :function
+     :onyx/batch-size batch-size
+     :onyx/batch-timeout batch-timeout
+     :onyx/doc "Pass the segment through unchanged"}
 
-      {:onyx/name :H
-       :onyx/fn :clojure.core/identity
-       :onyx/type :function
-       :onyx/batch-size batch-size
-       :onyx/batch-timeout batch-timeout
-       :onyx/doc "Pass the segment through unchanged"}
+    {:onyx/name :H
+     :onyx/fn :clojure.core/identity
+     :onyx/type :function
+     :onyx/batch-size batch-size
+     :onyx/batch-timeout batch-timeout
+     :onyx/doc "Pass the segment through unchanged"}
 
-      {:onyx/name :I
-       :onyx/fn :clojure.core/identity
-       :onyx/type :function
-       :onyx/batch-size batch-size
-       :onyx/batch-timeout batch-timeout
-       :onyx/doc "Pass the segment through unchanged"}
+    {:onyx/name :I
+     :onyx/fn :clojure.core/identity
+     :onyx/type :function
+     :onyx/batch-size batch-size
+     :onyx/batch-timeout batch-timeout
+     :onyx/doc "Pass the segment through unchanged"}
 
-      {:onyx/name :J
-       :onyx/plugin :onyx.plugin.core-async/output
-       :onyx/type :output
-       :onyx/medium :core.async
-       :onyx/batch-size batch-size
-       :onyx/batch-timeout batch-timeout
-       :onyx/max-peers 1
-       :onyx/doc "Writes segments to a core.async channel"}
+    {:onyx/name :J
+     :onyx/plugin :onyx.plugin.core-async/output
+     :onyx/type :output
+     :onyx/medium :core.async
+     :onyx/batch-size batch-size
+     :onyx/batch-timeout batch-timeout
+     :onyx/max-peers 1
+     :onyx/doc "Writes segments to a core.async channel"}
 
-      {:onyx/name :K
-       :onyx/plugin :onyx.plugin.core-async/output
-       :onyx/type :output
-       :onyx/medium :core.async
-       :onyx/batch-size batch-size
-       :onyx/batch-timeout batch-timeout
-       :onyx/max-peers 1
-       :onyx/doc "Writes segments to a core.async channel"}
+    {:onyx/name :K
+     :onyx/plugin :onyx.plugin.core-async/output
+     :onyx/type :output
+     :onyx/medium :core.async
+     :onyx/batch-size batch-size
+     :onyx/batch-timeout batch-timeout
+     :onyx/max-peers 1
+     :onyx/doc "Writes segments to a core.async channel"}
 
-      {:onyx/name :L
-       :onyx/plugin :onyx.plugin.core-async/output
-       :onyx/type :output
-       :onyx/medium :core.async
-       :onyx/batch-size batch-size
-       :onyx/batch-timeout batch-timeout
-       :onyx/max-peers 1
-       :onyx/doc "Writes segments to a core.async channel"}]))
+    {:onyx/name :L
+     :onyx/plugin :onyx.plugin.core-async/output
+     :onyx/type :output
+     :onyx/medium :core.async
+     :onyx/batch-size batch-size
+     :onyx/batch-timeout batch-timeout
+     :onyx/max-peers 1
+     :onyx/doc "Writes segments to a core.async channel"}]))
 
 ;;; Lifecycles ;;;
 

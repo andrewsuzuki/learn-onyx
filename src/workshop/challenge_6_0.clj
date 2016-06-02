@@ -23,51 +23,51 @@
 (defn build-catalog
   ([] (build-catalog 5 50))
   ([batch-size batch-timeout]
-     [{:onyx/name :read-segments
-       :onyx/plugin :onyx.plugin.core-async/input
-       :onyx/type :input
-       :onyx/medium :core.async
-       :onyx/batch-size batch-size
-       :onyx/batch-timeout batch-timeout
-       :onyx/max-peers 1
-       :onyx/doc "Reads segments from a core.async channel"}
+   [{:onyx/name :read-segments
+     :onyx/plugin :onyx.plugin.core-async/input
+     :onyx/type :input
+     :onyx/medium :core.async
+     :onyx/batch-size batch-size
+     :onyx/batch-timeout batch-timeout
+     :onyx/max-peers 1
+     :onyx/doc "Reads segments from a core.async channel"}
 
       ;; <<< BEGIN READ ME PART 2 >>>
 
       ;; There are a few special keys we need to set
       ;; since this is a windowed task, and also a function
       ;; acting as an output that discards data.
-      
-      {:onyx/name :bucket-page-views
+
+    {:onyx/name :bucket-page-views
        ;; :onyx.peer.function/function is a value for plugins
        ;; which are functions in the leaf position of a workflow.
-       :onyx/plugin :onyx.peer.function/function
+     :onyx/plugin :onyx.peer.function/function
 
        ;; We don't want to transform the data in this case, so
        ;; we merely use the identity function.
-       :onyx/fn :clojure.core/identity
+     :onyx/fn :clojure.core/identity
 
        ;; Note that even though this is a function, this is still
        ;; a task in the leaf position. Therefore, we must indicate
        ;; that this is an output task.
-       :onyx/type :output
+     :onyx/type :output
 
        ;; While there are no functional effects at this time by
        ;; setting :onyx/medium, it's convention to simply say
        ;; that the output medium is a :function.
-       :onyx/medium :function
+     :onyx/medium :function
 
        ;; Given that we want to process a piece of data and combine
        ;; it with our running aggregate exactly one time, we need
        ;; a globally unique key in the segment help Onyx know if its
        ;; seen it before. We indicate this key with :onyx/uniqueness-key.
-       :onyx/uniqueness-key :event-id
-       :onyx/batch-size batch-size
-       :onyx/batch-timeout batch-timeout
-       :onyx/doc "Identity function, used for windowing segments unchanged."}
-      
+     :onyx/uniqueness-key :event-id
+     :onyx/batch-size batch-size
+     :onyx/batch-timeout batch-timeout
+     :onyx/doc "Identity function, used for windowing segments unchanged."}]))
+
       ;; <<< END READ ME PART 2 >>>
-      ]))
+
 
 ;;; Lifecycles ;;;
 

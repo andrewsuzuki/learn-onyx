@@ -23,46 +23,46 @@
 (defn build-catalog
   ([] (build-catalog 5 50))
   ([batch-size batch-timeout]
-     [;; The first catalog entry we'll look at is an :input
-      ;; type. :input and :output catalog entries talk to plugins.
-      ;; Plugins are the mechanism by which data is moved in and out of
-      ;; Onyx. The important thing to note here is :onyx/plugin.
-      ;; This is mapped to a predefined keyword (resolved to a fn in that namespace) 
-      ;; by the plugin author. You'd typically find this
-      ;; catalog entry in the README of the plugin repository.
-      {:onyx/name :read-segments
-       :onyx/plugin :onyx.plugin.core-async/input
-       :onyx/type :input
-       :onyx/medium :core.async
-       :onyx/batch-size batch-size
-       :onyx/batch-timeout batch-timeout
-       :onyx/max-peers 1
-       :onyx/doc "Reads segments from a core.async channel"}
+   [;; The first catalog entry we'll look at is an :input
+    ;; type. :input and :output catalog entries talk to plugins.
+    ;; Plugins are the mechanism by which data is moved in and out of
+    ;; Onyx. The important thing to note here is :onyx/plugin.
+    ;; This is mapped to a predefined keyword (resolved to a fn in that namespace)
+    ;; by the plugin author. You'd typically find this
+    ;; catalog entry in the README of the plugin repository.
+    {:onyx/name :read-segments
+     :onyx/plugin :onyx.plugin.core-async/input
+     :onyx/type :input
+     :onyx/medium :core.async
+     :onyx/batch-size batch-size
+     :onyx/batch-timeout batch-timeout
+     :onyx/max-peers 1
+     :onyx/doc "Reads segments from a core.async channel"}
 
-      ;; Onyx function tasks require a :onyx/fn parameter to
-      ;; be defined, which is a keyword that maps to a namespace and var name
-      ;; The function's ns *must* be required onto the classpath before it is
-      ;; resolved. Unless otherwise specified, it should take exactly one
-      ;; parameter - a single segment.
-      {:onyx/name :times-two
-       :onyx/fn :workshop.challenge-2-0/times-two
-       :onyx/type :function
-       :onyx/batch-size batch-size
-       :onyx/batch-timeout batch-timeout
-       :onyx/doc "Multiplies :n in the segment by 2"}
+    ;; Onyx function tasks require a :onyx/fn parameter to
+    ;; be defined, which is a keyword that maps to a namespace and var name
+    ;; The function's ns *must* be required onto the classpath before it is
+    ;; resolved. Unless otherwise specified, it should take exactly one
+    ;; parameter - a single segment.
+    {:onyx/name :times-two
+     :onyx/fn :workshop.challenge-2-0/times-two
+     :onyx/type :function
+     :onyx/batch-size batch-size
+     :onyx/batch-timeout batch-timeout
+     :onyx/doc "Multiplies :n in the segment by 2"}
 
-      ;; The last catalog entry to observe is the :output type.
-      ;; As with the :input type, the critical piece is :onyx/plugin.
-      ;; This maps to a predefined keyword in the plugin. Under the
-      ;; covers, a multimethod is dispatching and looking for this keyword.
-      {:onyx/name :write-segments
-       :onyx/plugin :onyx.plugin.core-async/output
-       :onyx/type :output
-       :onyx/medium :core.async
-       :onyx/batch-size batch-size
-       :onyx/batch-timeout batch-timeout
-       :onyx/max-peers 1
-       :onyx/doc "Writes segments to a core.async channel"}]))
+    ;; The last catalog entry to observe is the :output type.
+    ;; As with the :input type, the critical piece is :onyx/plugin.
+    ;; This maps to a predefined keyword in the plugin. Under the
+    ;; covers, a multimethod is dispatching and looking for this keyword.
+    {:onyx/name :write-segments
+     :onyx/plugin :onyx.plugin.core-async/output
+     :onyx/type :output
+     :onyx/medium :core.async
+     :onyx/batch-size batch-size
+     :onyx/batch-timeout batch-timeout
+     :onyx/max-peers 1
+     :onyx/doc "Writes segments to a core.async channel"}]))
 
 ;;; <<< END READ ME >>>
 

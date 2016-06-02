@@ -12,30 +12,30 @@
 (defn build-catalog
   ([] (build-catalog 5 50))
   ([batch-size batch-timeout]
-     [{:onyx/name :read-segments
-       :onyx/plugin :onyx.plugin.core-async/input
-       :onyx/type :input
-       :onyx/medium :core.async
-       :onyx/batch-size batch-size
-       :onyx/batch-timeout batch-timeout
-       :onyx/max-peers 1
-       :onyx/doc "Reads segments from a core.async channel"}
+   [{:onyx/name :read-segments
+     :onyx/plugin :onyx.plugin.core-async/input
+     :onyx/type :input
+     :onyx/medium :core.async
+     :onyx/batch-size batch-size
+     :onyx/batch-timeout batch-timeout
+     :onyx/max-peers 1
+     :onyx/doc "Reads segments from a core.async channel"}
 
-      {:onyx/name :times-two
-       :onyx/fn :workshop.challenge-4-0/times-two
-       :onyx/type :function
-       :onyx/batch-size batch-size
-       :onyx/batch-timeout batch-timeout
-       :onyx/doc "Multiplies :n in the segment by 2"}
+    {:onyx/name :times-two
+     :onyx/fn :workshop.challenge-4-0/times-two
+     :onyx/type :function
+     :onyx/batch-size batch-size
+     :onyx/batch-timeout batch-timeout
+     :onyx/doc "Multiplies :n in the segment by 2"}
 
-      {:onyx/name :write-segments
-       :onyx/plugin :onyx.plugin.core-async/output
-       :onyx/type :output
-       :onyx/medium :core.async
-       :onyx/batch-size batch-size
-       :onyx/batch-timeout batch-timeout
-       :onyx/max-peers 1
-       :onyx/doc "Writes segments to a core.async channel"}]))
+    {:onyx/name :write-segments
+     :onyx/plugin :onyx.plugin.core-async/output
+     :onyx/type :output
+     :onyx/medium :core.async
+     :onyx/batch-size batch-size
+     :onyx/batch-timeout batch-timeout
+     :onyx/max-peers 1
+     :onyx/doc "Writes segments to a core.async channel"}]))
 
 ;;; Functions ;;;
 
@@ -52,16 +52,16 @@
 ;;
 ;; There are 5 lifecycle points that can be leveraged:
 ;;
-;; - :lifecycle/start-task? 
+;; - :lifecycle/start-task?
 ;; - :lifecycle/before-task-start
 ;; - :lifecycle/after-task-stop
 ;; - :lifecycle/before-batch
 ;; - :lifecycle/after-batch
-;; 
+;;
 ;; All lifecycle functions except :start-task? *must* return maps.
 ;; These maps are merged back into the main event map, and the
 ;; returned map's keys get priority over any pre-existing keys.
-;; 
+;;
 ;; :start-task? should return a boolean value. If this value returns
 ;; false, the task backs off for a predetermined amount of time
 ;; and calls this function again until it returns true. This is useful

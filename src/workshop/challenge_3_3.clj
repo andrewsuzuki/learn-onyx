@@ -12,27 +12,27 @@
 (defn build-catalog
   ([] (build-catalog 5 50))
   ([batch-size batch-timeout]
-     [{:onyx/name :read-segments
-       :onyx/plugin :onyx.plugin.core-async/input
-       :onyx/type :input
-       :onyx/medium :core.async
-       :onyx/batch-size batch-size
-       :onyx/batch-timeout batch-timeout
-       :onyx/max-peers 1
-       :onyx/doc "Reads segments from a core.async channel"}
+   [{:onyx/name :read-segments
+     :onyx/plugin :onyx.plugin.core-async/input
+     :onyx/type :input
+     :onyx/medium :core.async
+     :onyx/batch-size batch-size
+     :onyx/batch-timeout batch-timeout
+     :onyx/max-peers 1
+     :onyx/doc "Reads segments from a core.async channel"}
 
       ;; <<< BEGIN FILL ME IN PART 1 >>>
 
       ;; <<< END FILL ME IN PART 1 >>>
 
-      {:onyx/name :write-segments
-       :onyx/plugin :onyx.plugin.core-async/output
-       :onyx/type :output
-       :onyx/medium :core.async
-       :onyx/batch-size batch-size
-       :onyx/batch-timeout batch-timeout
-       :onyx/max-peers 1
-       :onyx/doc "Writes segments to a core.async channel"}]))
+    {:onyx/name :write-segments
+     :onyx/plugin :onyx.plugin.core-async/output
+     :onyx/type :output
+     :onyx/medium :core.async
+     :onyx/batch-size batch-size
+     :onyx/batch-timeout batch-timeout
+     :onyx/max-peers 1
+     :onyx/doc "Writes segments to a core.async channel"}]))
 
 ;;; Functions ;;;
 

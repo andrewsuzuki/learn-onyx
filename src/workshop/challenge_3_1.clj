@@ -14,44 +14,44 @@
 (defn build-catalog
   ([] (build-catalog 5 50))
   ([batch-size batch-timeout]
-     [{:onyx/name :read-segments
-       :onyx/plugin :onyx.plugin.core-async/input
-       :onyx/type :input
-       :onyx/medium :core.async
-       :onyx/batch-size batch-size
-       :onyx/batch-timeout batch-timeout
-       :onyx/max-peers 1
-       :onyx/doc "Reads segments from a core.async channel"}
+   [{:onyx/name :read-segments
+     :onyx/plugin :onyx.plugin.core-async/input
+     :onyx/type :input
+     :onyx/medium :core.async
+     :onyx/batch-size batch-size
+     :onyx/batch-timeout batch-timeout
+     :onyx/max-peers 1
+     :onyx/doc "Reads segments from a core.async channel"}
 
-      {:onyx/name :upper-case
-       :onyx/fn :workshop.challenge-3-1/upper-case
-       :onyx/type :function
-       :onyx/batch-size batch-size
-       :onyx/batch-timeout batch-timeout
-       :onyx/doc "Converts :name to all upper-case letters."}
+    {:onyx/name :upper-case
+     :onyx/fn :workshop.challenge-3-1/upper-case
+     :onyx/type :function
+     :onyx/batch-size batch-size
+     :onyx/batch-timeout batch-timeout
+     :onyx/doc "Converts :name to all upper-case letters."}
 
-      {:onyx/name :interpose-pipe
-       :onyx/fn :workshop.challenge-3-1/interpose-pipe
-       :onyx/type :function
-       :onyx/batch-size batch-size
-       :onyx/batch-timeout batch-timeout
-       :onyx/doc "Interposes the pipe character (|) between all chars in :name"}
+    {:onyx/name :interpose-pipe
+     :onyx/fn :workshop.challenge-3-1/interpose-pipe
+     :onyx/type :function
+     :onyx/batch-size batch-size
+     :onyx/batch-timeout batch-timeout
+     :onyx/doc "Interposes the pipe character (|) between all chars in :name"}
 
-      {:onyx/name :interpose-space
-       :onyx/fn :workshop.challenge-3-1/interpose-space
-       :onyx/type :function
-       :onyx/batch-size batch-size
-       :onyx/batch-timeout batch-timeout
-       :onyx/doc "Interposes a single space character between all chars in :name"}
+    {:onyx/name :interpose-space
+     :onyx/fn :workshop.challenge-3-1/interpose-space
+     :onyx/type :function
+     :onyx/batch-size batch-size
+     :onyx/batch-timeout batch-timeout
+     :onyx/doc "Interposes a single space character between all chars in :name"}
 
-      {:onyx/name :write-segments
-       :onyx/plugin :onyx.plugin.core-async/output
-       :onyx/type :output
-       :onyx/medium :core.async
-       :onyx/batch-size batch-size
-       :onyx/batch-timeout batch-timeout
-       :onyx/max-peers 1
-       :onyx/doc "Writes segments to a core.async channel"}]))
+    {:onyx/name :write-segments
+     :onyx/plugin :onyx.plugin.core-async/output
+     :onyx/type :output
+     :onyx/medium :core.async
+     :onyx/batch-size batch-size
+     :onyx/batch-timeout batch-timeout
+     :onyx/max-peers 1
+     :onyx/doc "Writes segments to a core.async channel"}]))
 
 ;;; Functions ;;;
 
